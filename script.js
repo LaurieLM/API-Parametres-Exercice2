@@ -1,4 +1,4 @@
-DOM;
+// DOM;
 const bodyElement = document.querySelector("body");
 const titleSearch = document.querySelector("#search-title");
 const inputSearch = document.querySelector("#search-input");
@@ -15,15 +15,17 @@ async function getRecipes(road) {
   response.recipes.forEach((recipe) => {
     const newH2 = document.createElement("h2");
     const newUl = document.createElement("ul");
+    const newH3 = document.createElement("h3");
     const newP = document.createElement("p");
 
     newH2.textContent = recipe.name;
-    newUl.textContent = `Ingrédients : `;
-    newP.textContent = `Préparation : ${recipe.instructions}`;
+    newUl.innerHTML = `<h3> Ingrédients </h3> \n `;
+    newH3.textContent = `Préparation`;
+    newP.textContent = recipe.instructions;
 
     bodyElement.appendChild(newH2);
     bodyElement.appendChild(newUl);
-    bodyElement.appendChild(newP);
+    bodyElement.appendChild(newH3);
     bodyElement.appendChild(newP);
 
     recipe.ingredients.forEach((ingredient) => {
